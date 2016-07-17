@@ -1,5 +1,4 @@
 (function() {
-    console.log("herer");
     $('.fetchData').fileupload({
         dataType: 'json',
         done: function (e, data) {

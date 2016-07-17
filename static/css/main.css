@@ -26,14 +26,15 @@
     padding-bottom: 5px;
 }
 .desc-val {
-        margin-top: 5px;
+    margin-top: 5px;
 }
 
-.upload {     margin: auto;
-        width: 20%;
-    }
+.upload {margin: auto;}
 .submit-upload {
     margin: auto;
-    width: 12%;
-
+}
+h3 {
+    color: #9a9a9a;
+    margin: -10px auto 40px auto;
+    width: 60%;
 }
