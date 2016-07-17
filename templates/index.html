@@ -2,17 +2,17 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>jQuery File Upload Example</title>
+<title>Euler's Notes</title>
 <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="../static/css/main.css">
-<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+<script src="../static/jquery.min.js" ></script>
 </head>
 <body>
     <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">
-                Notes Parser
+                <img src="http://hackathon.io.s3.amazonaws.com/profiles/images/000/070/967/thumb/logo.jpeg?1468740242"/> Euler's Notes
             </a>
         </div>
     </div>
@@ -50,7 +50,8 @@
                                     $(".info").show();
                                     $('.title-val').html(entities[obj_keys[key]]['title']);
                                     $('.desc-val').html(entities[obj_keys[key]]['abstract']);
-                                    getTweets(entities[obj_keys[key]]['title']);
+                                    //getTweets(entities[obj_keys[key]]['title']);
+                                    getWikipedia(entities[obj_keys[key]]['title']);
                                     break;
                                 }
                             }
@@ -61,7 +62,26 @@
                                 url: '/twitter?keyword='+keyword,
                                 type: 'GET',
                                 success: function(response) {
-                                    
+                                                                
+                                }
+                            });
+                        }
+
+                        function getWikipedia(keyword) {
+                            $(".wiki").html("");
+                            $.ajax({
+                                url: '/wikipedia?keyword='+keyword,
+                                type: 'GET',
+                                success: function(response) {
+                                    response = response.data;
+                                    if(response.hasOwnProperty('query') && response.query.hasOwnProperty('pages')) {
+                                        $(".wiki").append("<h3 class='wiki-title'>Related Wikipedia Resource</h3>");
+                                        var obj_keys = Object.keys(response.query.pages);
+                                        //<img src='"+response.query.pages[obj_keys[i]]['thumbnail']['source']+"'>
+                                        for(var i in obj_keys) {
+                                            $(".wiki").append("<div class='col-lg-3'><h4>"+response.query.pages[obj_keys[i]]['title']+"</h4><div class='wiki-sub'><span>"+response.query.pages[obj_keys[i]]['extract']+"</span></div></div>");
+                                        }  
+                                    }
                                 }
                             });
                         }
@@ -74,6 +94,9 @@
                     <div class="submit-upload pull-right"><input  class="btn btn-primary " type="submit" value="Upload"></div>
                 </form>
             {% endif %}
+        </div>
+        <div class="row wiki">
+
         </div>
     </div>
     </section>

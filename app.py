@@ -21,6 +21,11 @@ def twitter():
     return jsonify(tweets=get_tweets(keyword))
 '''
 
+@app.route('/wikipedia')
+def wikipedia():
+    keyword = request.args.get('keyword')
+    return jsonify(data=getWikiInfo(keyword))
+
 @app.route('/notes/', methods=['POST'])
 def upload():
     file = request.files['file']

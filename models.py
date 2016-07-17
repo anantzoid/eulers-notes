@@ -30,3 +30,11 @@ def extract_entity(filename):
 def getFileData(filename):
     return "True"   
 
+def getWikiInfo(keyword):
+    url = 'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrsearch='+keyword+'&gsrlimit=4&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max'
+    resp = requests.get(url)
+    if resp.status_code == 200:
+        resp = json.loads(resp.text)
+    else:
+        resp = {}
+    return resp
