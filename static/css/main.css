@@ -1,0 +1,39 @@
+.navbar { margin-bottom: 0px !important; }
+.main { 
+    padding-top: 40px; 
+    background-color: #f4f4f4; 
+    min-height: 800px;
+}
+.main .container {
+    background-color: white;
+    border-radius: 4px;
+    min-height: 200px;
+}
+
+.row { padding: 20px;}
+.filename-tag {
+    float: left;
+    background: #f4f4f4;
+    margin: 0 5px;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+.info { display: none; }
+.highlight { color: red !important; }
+.title-val {    
+    font-size: 20px;
+    border-bottom: 1px solid;
+    padding-bottom: 5px;
+}
+.desc-val {
+        margin-top: 5px;
+}
+
+.upload {     margin: auto;
+        width: 20%;
+    }
+.submit-upload {
+    margin: auto;
+    width: 12%;
+
+}
