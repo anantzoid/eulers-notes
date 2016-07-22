@@ -24,7 +24,7 @@ def extract_entity(filename):
     for entity in keyword_dict:
         if entity['spot'] not in extracted_entities:
             extracted_entities[entity['spot']] = entity
-
+    
     return {'text': ocrd, 'entities': json.dumps(extracted_entities)}
 
 def getFileData(filename):
